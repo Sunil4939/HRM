@@ -105,11 +105,6 @@ export default StyleSheet.create({
         color: '#1F2C37',
     },
 
-    container1:{
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'rgba(79, 61, 86, 0.63)',
-    },
     calenderBox:{
         marginHorizontal: width * .05,
         paddingVertical: height * .02,

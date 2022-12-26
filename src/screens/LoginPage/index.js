@@ -1,10 +1,11 @@
-import React from "react";
+import React,{ useState } from "react";
 import { View, Text, StatusBar, ImageBackground, Image, TextInput, TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { COLORS, icons, images } from "../../constants";
 import styles from "./styles";
 
 const LoginPage = ({navigation}) => {
+  const [text, setText] = useState('');
   return (
     <ImageBackground source={images.loginbg} style={styles.bgImage} resizeMode="stretch">
       <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
@@ -13,14 +14,17 @@ const LoginPage = ({navigation}) => {
         <Text style={styles.wlc}>Hey, Welcome</Text>
         <View>
           <TextInput
-            // placeholder="johnsondoe@nomail.com" placeholderTextColor={'#3C3C43'} 
-            value="johnsondoe@nomail.com" style={styles.input} />
+            onChangeText={text => setText(text)}
+            // onChange={true}
+            defaultValue="johnsondoe@nomail.com" style={styles.input} />
           <Image source={icons.mail} resizeMode="contain" style={styles.mail} />
         </View>
         <View>
           <TextInput
             secureTextEntry={true}
-            value="johnsondoe@nomail.com" style={styles.input} />
+            defaultValue="johnsondoe@nomail.com" 
+            onChangeText={text => setText(text)}
+            style={styles.input} />
           <Image source={icons.lock} resizeMode="contain" style={styles.lock} />
           <TouchableOpacity style={styles.showBtn} >
             <Image source={icons.show} resizeMode="contain" style={styles.show} />

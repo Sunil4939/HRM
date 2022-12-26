@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, Text, StatusBar, View, TouchableOpacity, Image, Dimensions } from "react-native";
 import { BarChart, } from "react-native-chart-kit";
 import { COLORS, icons, images } from "../../constants";
 import styles from "./styles";
-import {Calendar} from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
+import Modal from "react-native-modal";
 const { width, height } = Dimensions.get('window')
 
 const Holiday = ({ navigation }) => {
+    const [isModalVisible, setModalVisible] = useState(false);
     const data = {
         labels: ["Jan", "", "Feb", "", "Mar", "", "Apr", "", "May", "", "Jun", "", "Jul", "", "Aug", "", "Sep", "", "Oct", "", "Nov", "", "Dec", "",],
         datasets: [
@@ -30,7 +32,15 @@ const Holiday = ({ navigation }) => {
             <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
             <View style={styles.head}>
                 <Text style={styles.date}>February 28 - March 28, 2020</Text>
-                <TouchableOpacity style={styles.monthBtn} >
+                <Modal isVisible={isModalVisible}>
+                    <View style={styles.calenderBox}>
+                        <TouchableOpacity style={styles.closeBtn} onPress={() => setModalVisible(!isModalVisible)} >
+                            <Image source={icons.close} style={styles.close} resizeMode="contain" />
+                        </TouchableOpacity>
+                        <Calendar />
+                    </View>
+                </Modal>
+                <TouchableOpacity style={styles.monthBtn} onPress={() => setModalVisible(!isModalVisible)} >
                     <Text style={styles.month}>Month</Text>
                     <Image style={styles.down} source={icons.down} resizeMode="contain" />
                 </TouchableOpacity>
@@ -74,16 +84,7 @@ const Holiday = ({ navigation }) => {
                 </View>
             </View>
         </ScrollView>
-        // <View style={styles.container1}>
-        //    <View style={styles.calenderBox}>
-        //    <TouchableOpacity style={styles.closeBtn}>
-        //         <Image source={icons.close} style={styles.close} resizeMode="contain" />
-        //     </TouchableOpacity>
 
-        //     <Calendar />
-
-        //    </View>
-        // </View>
     )
 }
 

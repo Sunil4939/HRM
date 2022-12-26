@@ -106,14 +106,6 @@ export default StyleSheet.create({
         marginHorizontal: width * .04,
     },
 
-
-
-    container1:{
-        flex:1,
-        backgroundColor: 'rgba(79, 61, 86, 0.63)',
-        paddingHorizontal: width * .04,
-        justifyContent: 'center',
-    },
     success:{
         width: width * .4,
         height: height * .25,

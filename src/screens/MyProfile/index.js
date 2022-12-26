@@ -38,7 +38,7 @@ const MyProfile = ({ navigation }) => {
             </View>
             <View style={styles.inputBox}>
                 <Text style={styles.labels}>Address</Text>
-                <TextInput numberOfLines={4}
+                <TextInput numberOfLines={8}
                     textAlignVertical='top'
                     placeholder="711 Leavenworth Apt. # 47 San Francisco, CA 94109" placeholderTextColor={'#78828A'} style={styles.input} />
             </View>
